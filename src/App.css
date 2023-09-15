@@ -2,23 +2,3 @@
   text-align: center;
 }
 
-
-
-
-.blank{
-  color: red;
-}
-.box{
-  width: 200px;
-  height: 200px;
-  display: inline-block;
-}
-.red{
-  background: rgb(16, 199, 174);
-}
-.blue{
-  background: rgb(191, 18, 214);
-}
-.yellow{
-  background: yellow;
-}
