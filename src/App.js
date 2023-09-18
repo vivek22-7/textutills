@@ -24,11 +24,22 @@ function App() {
       setMode('dark');
       document.body.style.backgroundColor = '#172634';
       showAlert("Dark Mode has been enabled", "success");
+      document.title = "TextUtils - Home(Dark Mode)";
+      
+      // Flashy title
+      // 
+      // setInterval(() => {
+      //   document.title = 'TexUtils is Amazing';
+      // }, 2000);
+      // setInterval(() => {
+      //   document.title = "Install TextUtils Now!";
+      // }, 1500);
     }
     else{
       setMode('light');
       document.body.style.backgroundColor = 'white';
       showAlert("Light Mode has been enabled", "success");
+      document.title = "TextUtils - Home";
     }
   }
   return (
