@@ -1,12 +1,15 @@
 
 import { useState } from 'react';
 import './App.css';
-// import About from './components/About';
+import About from './components/About';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
 import Alert from './components/Alert';
 
-function App() {
+
+
+
+function App() {    
   const[Mode, setMode] = useState('light'); // Wheater dark mode is enabled or not
   const[alert, setAlert] = useState(null);
 
@@ -43,13 +46,21 @@ function App() {
     }
   }
   return (
-   <>    
+   <>  
+   <Router>
     <Navbar title="TextUtils" aboutText = "About TextUtils" mode= {Mode} toggleMode={toggleMode}/> 
     <Alert alert = {alert}/>
     <div className="container my-3">
-      <TextForm showAlert= {showAlert} heading= "Enter the text to analyze Below" mode={Mode}/>      
-      {/* <About/> */}
+      <Router>
+        <Route path='/about'>
+          <About/>
+        </Route>
+        <Route path='/'>
+          <TextForm showAlert= {showAlert} heading= "Enter the text to analyze Below" mode={Mode}/>  
+        </Route>
+      </Router>
     </div>
+  </Router>  
    </>
   );
 }
