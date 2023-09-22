@@ -23,11 +23,11 @@ export default function TextForm(props) {
         setText(newText);
         props.showAlert("Text Box Cleared!", "success");
     }
-    const emptytext = ()=> {
-        if(text === "Enter text here"){
-            setText("");
-        }        
-    }
+    // const emptytext = ()=> {
+    //     if(text === "Enter text here"){
+    //         setText("");
+    //     }        
+    // }
     // const handleCopy = ()=>{
     //     var text = document.getElementById("myBox");
     //     text.select();
@@ -45,7 +45,7 @@ export default function TextForm(props) {
         setText(newText.join(" "));
         props.showAlert("Extra spaces removed!", "success");
     }
-    const [text, setText] = useState('Enter text here');
+    const [text, setText] = useState('');
     
 
   return (
@@ -54,7 +54,7 @@ export default function TextForm(props) {
         <h1>{props.heading}</h1>
         <div className="mb-3">
         {/* <textarea className="form-control" value={text} onChange={handleOnChange} id="myBox" rows="8"></textarea> */}
-        <textarea className="form-control" value={text} onClick={emptytext} onChange={handleOnChange} style={{backgroundColor :props.mode === 'dark'?'grey':'white', color :props.mode === 'dark'?'white':'black'}} id="myBox" rows="8"></textarea>
+        <textarea className="form-control" value={text} placeholder='Enter Text Here' onChange={handleOnChange} style={{backgroundColor :props.mode === 'dark'?'grey':'white', color :props.mode === 'dark'?'white':'black'}} id="myBox" rows="8"></textarea>
 
     </div>
     <button className="btn btn-primary mx-1" onClick={handleUpClick}>Convert To UpperCase</button>
