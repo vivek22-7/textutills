@@ -1,17 +1,27 @@
 import React, {useState} from 'react'
-
+import copy from "copy-to-clipboard";
 
 
 export default function TextForm(props) {
+    
     const handleUpClick = ()=> {
         
         let newText = text.toUpperCase();
         setText(newText);
         props.showAlert("Converted to uppercase!", "success");
     }
+    const [copyText, setCopyText] = useState('');
     const handleOnChange = (event)=> {
         
         setText(event.target.value);
+        
+        setCopyText(event.target.value);
+        copy(copyText);
+        
+    }
+    const handleCopy = ()=>{
+        copy(copyText);
+        props.showAlert("Text Copied to Clipboard", "success")
     }
     const handleLoClick = ()=>{
         let newText = text.toLowerCase();
@@ -28,11 +38,7 @@ export default function TextForm(props) {
     //         setText("");
     //     }        
     // }
-    // const handleCopy = ()=>{
-    //     var text = document.getElementById("myBox");
-    //     text.select();
-    //     navigator.clipboard.writeText(text.value);
-    // // }
+    
     // const handleCopy = () => {
     //     var text = document.getElementById("myBox");
     //     text.select();
@@ -46,8 +52,7 @@ export default function TextForm(props) {
         props.showAlert("Extra spaces removed!", "success");
     }
     const [text, setText] = useState('');
-    
-
+   
   return (
     <>
     <div className='container' style={{color :props.mode === 'dark'?'white':'black'}}>
@@ -60,7 +65,7 @@ export default function TextForm(props) {
     <button className="btn btn-primary mx-1" onClick={handleUpClick}>Convert To UpperCase</button>
     <button className="btn btn-primary mx-1" onClick={handleLoClick}>Convert To LowerCase</button>
     <button className="btn btn-primary mx-1" onClick={handleClClick}>Clear Text</button>
-    {/* <button className="btn btn-primary mx-1" onClick={handleCopy}>Copy Text</button> */}
+    <button className="btn btn-primary mx-1" onClick={handleCopy}>Copy Text</button> 
     <button className="btn btn-primary mx-1" onClick={handleExtraSpaces}>Remove Extra Spaces</button>
 
 
@@ -68,7 +73,7 @@ export default function TextForm(props) {
     </div>
     <div className="container my-3" style={{color :props.mode === 'dark'?'white':'black'}}>
         <h2>Your text summary</h2>
-        <p>{text.split(" ").length} words and {text.length} characters</p>
+        <p>{text.split(" ").length-1} words and {text.length} characters</p>
         <p>{0.008 * text.split(" ").length} Minutes read</p>
         <h2>Preview</h2>
         <p>{text === 'Enter text here' || text.length === 0? "Enter something in the text box above to preview here" : text}</p>
