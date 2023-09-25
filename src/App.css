@@ -2,3 +2,6 @@
   text-align: center;
 }
 
+.accordion-item {
+  border: 1px;
+}

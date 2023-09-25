@@ -27,8 +27,19 @@ function App() {
   //   path: "/",
   //   element: <TextForm showAlert= {showAlert} heading= "Enter the text to analyze Below" mode={Mode}/>, 
   // },]);
-  
-  const toggleMode = ()=>{
+  // const removeBodyClasses = ()=>{
+  //   document.body.classList.remove('bg-light')
+  //   document.body.classList.remove('bg-dark')
+  //   document.body.classList.remove('bg-warning')
+  //   document.body.classList.remove('bg-danger')
+  //   document.body.classList.remove('bg-success')
+    
+  // }
+
+  const toggleMode = (cls)=>{
+    // console.log(cls)
+    // removeBodyClasses()
+    // document.body.classList.add('bg-'+cls)
     if(Mode === 'light'){
       setMode('dark');
       document.body.style.backgroundColor = '#172634';
@@ -62,7 +73,7 @@ function App() {
         <Route path='about' element={<About/>}></Route> */}
         
       <Route exact path='/' element={<TextForm showAlert= {showAlert} heading= "Enter the text to analyze Below" mode={Mode}/>}></Route>
-      <Route exact path='about' element={<About/>}> </Route>
+      <Route exact path='about' element={<About mode={Mode}/>}> </Route>
       
            
     
